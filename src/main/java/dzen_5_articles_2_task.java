@@ -7,8 +7,6 @@ public class dzen_5_articles_2_task {
     public static void main(String[] args) {
         Configuration.browser = "chrome";
         Configuration.headless = false; // false - чтобы видеть браузер
-        Configuration.timeout = 10000; // 10 секунд ожидания элементов
-//        Configuration.browserSize = "1920x1080"; // Размер окна браузера
         open("https://www.dzen.ru");
 
         ElementsCollection news = $$x("//li[@data-testid=\"news-item\"]//p[@aria-label=\"Заголовок\"]");

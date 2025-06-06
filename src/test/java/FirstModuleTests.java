@@ -14,7 +14,6 @@ public class FirstModuleTests {
 //        Настраиваем Selenide
         Configuration.browser = "chrome";
         Configuration.headless = false; // false - чтобы видеть браузер
-        Configuration.timeout = 10000; // 10 секунд ожидания элементов
         Configuration.browserSize = "1920x1080"; // Размер окна браузера
         open("https://russcarton.ru/");
     }

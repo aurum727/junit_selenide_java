@@ -10,8 +10,6 @@ public class SearchTest {
         // Настройки Selenide
         Configuration.browser = "chrome";
         Configuration.headless = false; // false - чтобы видеть браузер
-        Configuration.timeout = 10000; // 10 секунд ожидания элементов
-        Configuration.browserSize = "1920x1080"; // Размер окна браузера
         // Открываем ya.ru
         open("https://www.ya.ru");
         // Закрываем всплывающее окно с куками, если оно появится
