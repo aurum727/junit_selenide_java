@@ -2,7 +2,6 @@ import com.github.javafaker.Faker;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,7 +27,7 @@ public class FirstModuleTests {
 
     @Test
     public void siteHeaderNotEmpty_1(){
-        var page_header = $(By.xpath("//h1")).getText();
+        var page_header = $x("//h1").getText();
         assertEquals(page_header, "Интернет-магазин упаковочных материалов");
     }
 
@@ -43,20 +42,20 @@ public class FirstModuleTests {
 
         String auth_modal_template_locator_string = "//div[@class=\"oes-modal opened\"]//input[@name=\"%s\"]";
         // click through to the registration page
-        $(By.xpath("//div[@id=\"header__top\"]" +
-                "//a[@href=\"/personal/\" and not (contains(text(),\"Профиль\"))]")).click();
+        $x("//div[@id=\"header__top\"]" +
+                "//a[@href=\"/personal/\" and not (contains(text(),\"Профиль\"))]").click();
         // open new user registration form
-        $(By.xpath("//button[@class=\"oes-form__button\" and text()=\"ЗАРЕГИСТРИРОВАТЬСЯ\"]")).click();
+        $x("//button[@class=\"oes-form__button\" and text()=\"ЗАРЕГИСТРИРОВАТЬСЯ\"]").click();
         // filling in the data on the form
-        $(By.xpath(String.format(auth_modal_template_locator_string,    "UF_USER_FULL_NAME" ))).setValue(fullName);
-        $(By.xpath(String.format(auth_modal_template_locator_string,    "REGISTER[EMAIL]"))).setValue(email);
-        $(By.xpath(String.format(auth_modal_template_locator_string,    "REGISTER[PERSONAL_PHONE]"))).setValue(phone);
-        $(By.xpath(String.format(auth_modal_template_locator_string,    "REGISTER[PASSWORD]"))).setValue(pass);
-        $(By.xpath(String.format(auth_modal_template_locator_string,    "REGISTER[CONFIRM_PASSWORD]"))).setValue(pass);
+        $x(String.format(auth_modal_template_locator_string, "UF_USER_FULL_NAME" )).setValue(fullName);
+        $x(String.format(auth_modal_template_locator_string, "REGISTER[EMAIL]")).setValue(email);
+        $x(String.format(auth_modal_template_locator_string, "REGISTER[PERSONAL_PHONE]")).setValue(phone);
+        $x(String.format(auth_modal_template_locator_string, "REGISTER[PASSWORD]")).setValue(pass);
+        $x(String.format(auth_modal_template_locator_string, "REGISTER[CONFIRM_PASSWORD]")).setValue(pass);
         // submit registration
-        $(By.xpath(String.format(auth_modal_template_locator_string,    "register_submit_button"))).click();
+        $x(String.format(auth_modal_template_locator_string,    "register_submit_button")).click();
         // get email data on profile page
-        var reg_email = $(By.xpath("//span[text()=\"Email\"]/parent::*//span[2]")).getText();
+        var reg_email = $x("//span[text()=\"Email\"]/parent::*//span[2]").getText();
         // checking the correctness of the email
         assertEquals(email, reg_email);
         System.out.println(String.format("cгенерирован для регистрации email \t %s \n" +
@@ -65,15 +64,15 @@ public class FirstModuleTests {
 
     @Test
     public void siteImageAltParameter_3() {
-        var altValue = $(By.xpath("//div[@class=\"header__logo\"]//img")).getAttribute("alt");
+        var altValue = $x("//div[@class=\"header__logo\"]//img").getAttribute("alt");
         assertEquals("", altValue);
     }
 
     @Test
     public void siteToponimViewSelector_4(){
-        $(By.xpath("//button[@class=\"headerToponim parent-element arrow_city\"]")).click();
-        $(By.xpath("//div[@class=\"floating-block\"]")).shouldBe(visible);
-        var visibleParameter =  $(By.xpath("//div[@class=\"floating-block\"]")).getAttribute("style");
+        $x("//button[@class=\"headerToponim parent-element arrow_city\"]").click();
+        $x("//div[@class=\"floating-block\"]").shouldBe(visible);
+        var visibleParameter =  $x("//div[@class=\"floating-block\"]").getAttribute("style");
         assertEquals(visibleParameter, "display: block;");
     }
 }
