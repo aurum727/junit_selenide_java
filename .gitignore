@@ -15,3 +15,5 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+/build/reports/tests/1749197263114.0.html
+/build/reports/tests/1749197263114.0.png
