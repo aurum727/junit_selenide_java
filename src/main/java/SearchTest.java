@@ -1,7 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class SearchTest {
@@ -31,9 +30,6 @@ public class SearchTest {
             System.out.println("Cookie popup not found or already closed");
         }
 
-
-        // Ждем загрузки результатов (лучше использовать явные ожидания в реальных тестах)
-//        sleep(3000);
         // Закрываем браузер
         closeWebDriver();
     }
